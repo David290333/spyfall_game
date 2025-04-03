@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Spyfall - Konec hry</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-gameover.css') }}">
+</head>
+<body>
+    <header class="page-header">
+        <a href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='images/logo.jpeg') }}" alt="Logo" class="logo-img">
+        </a>
+        <a href="{{ url_for('rules') }}">
+            <img src="{{ url_for('static', filename='images/rules.jpeg') }}" alt="Pravidla" class="rules-img">
+        </a>
+    </header>    
+    <h1>Konec hry</h1>
+    <p>Špión byl: <strong>{{ spy }}</strong></p>
+    <p>Lokace byla: <strong>{{ location.name }}</strong></p>
+
+    <form action="/restart_game" method="post">
+        <input type="hidden" name="room_code" value="{{ room_code }}">
+        <button type="submit">Hrát znovu</button>
+    </form>
+</body>
+</html>

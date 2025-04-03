@@ -1,0 +1,161 @@
+/* Základní reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #040714; /* Disney dark */
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header */
+.header {
+    width: 100%;
+    background-color: #0c0c28;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.header .logo {
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.header .logo:hover {
+    color: #1f80e0; /* Disney blue */
+}
+
+/* Container */
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1200px;
+    padding: 40px 20px;
+    margin-top: 30px;
+    background-color: #1a1d29;
+    border-radius: 10px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Text content */
+.text-section {
+    flex: 1;
+    color: #e5e5e5;
+}
+
+.title {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: #1f80e0;
+}
+
+.description {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #c4c4c4;
+}
+
+ul, ol {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+ul li, ol li {
+    margin-bottom: 8px;
+}
+
+/* Obrázek */
+.image-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-section img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Footer */
+.footer {
+    width: 100%;
+    background-color: #0c0c28;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 40px;
+}
+
+.footer p {
+    color: #aaa;
+    font-size: 14px;
+}
+
+.footer a {
+    color: #1f80e0;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #3ca7ff;
+}
+
+/* Responsivita */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .text-section {
+        text-align: center;
+        padding: 0;
+    }
+    .image-section {
+        padding: 10px;
+    }
+}
+
+.page-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.logo-img,
+.rules-img {
+    height: 50px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover,
+.rules-img:hover {
+    transform: scale(1.05);
+}

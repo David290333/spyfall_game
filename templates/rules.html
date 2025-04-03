@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spyfall Rules</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-rules.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="page-header">
+        <a href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='images/logo.jpeg') }}" alt="Logo" class="logo-img">
+        </a>
+    </header>    
+<header class="header">
+    <a href="index.html" class="logo">Spyfall Game</a>
+</header>
+
+<div class="container">
+    <div class="text-section">
+        <h1 class="title">Rules</h1>
+
+        <h3 class="section-title">🕵️ Spyfall: The No-Roles Edition!</h3>
+        <p class="description">
+            Welcome to <strong>Spyfall</strong>, the game of mystery, bluffing, and clever questions! In this version, there are <strong>no special roles</strong>—just pure deduction and fun. Ready to play? Let’s go! 🎲
+        </p>
+
+        <h3 class="section-title">🎯 Goal of the Game:</h3>
+        <p class="description">
+            Figure out the <strong>secret location</strong> or, if you’re the spy, try to stay hidden!
+        </p>
+
+        <h3 class="section-title">👥 What You Need:</h3>
+        <ul class="description">
+            <li>4 to 8 players 👫</li>
+            <li>A set of <strong>location cards</strong> (each showing the same location)</li>
+            <li>1 spy card (without a location)</li>
+            <li>A timer (set for <strong>8 minutes</strong> per round)</li>
+        </ul>
+
+        <h3 class="section-title">📋 Setup:</h3>
+        <ol class="description">
+            <li>Pick a set of location cards (like <strong>Beach, Hospital, Space Station</strong>).</li>
+            <li>Shuffle the cards and include <strong>one spy card</strong>.</li>
+            <li>Deal <strong>one card to each player</strong>. Keep it secret! 🤫</li>
+        </ol>
+
+        <h3 class="section-title">🎮 How to Play:</h3>
+        <ul class="description">
+            <li><strong>Start the Timer:</strong> Set it to <strong>8 minutes</strong>.</li>
+            <li><strong>Ask Questions:</strong>
+                <ul>
+                    <li>Players take turns asking each other <strong>yes-or-no questions</strong> about the location.</li>
+                    <li>Example questions:
+                        <ul>
+                            <li>“Is this place usually crowded?”</li>
+                            <li>“Would I need special clothes here?”</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><strong>Answer Honestly:</strong>
+                <ul>
+                    <li>If you know the location, <strong>answer truthfully</strong>.</li>
+                    <li>If you’re the spy, <strong>bluff your way through</strong>! 😎</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3 class="section-title">🔍 Catching the Spy:</h3>
+        <p class="description">
+            At any time, if you <strong>suspect the spy</strong>, you can call for a <strong>vote</strong>:
+        </p>
+        <ol class="description">
+            <li>Say, “I think <strong>[player name]</strong> is the spy!”</li>
+            <li>If <strong>more than half</strong> the players agree, reveal that person’s card:
+                <ul>
+                    <li><strong>If they’re the spy:</strong> You win! 🎉</li>
+                    <li><strong>If they’re not:</strong> The spy wins! 🕵️‍♂️</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h3 class="section-title">🏁 End of the Round:</h3>
+        <p class="description">
+            When time’s up, the <strong>spy reveals themselves</strong>:
+        </p>
+        <ul class="description">
+            <li><strong>If the spy guesses the location correctly:</strong> The spy wins! 🎉</li>
+            <li><strong>If not:</strong> The other players win! 🥳</li>
+        </ul>
+
+        <h3 class="section-title">🏆 Winning the Game:</h3>
+        <p class="description">
+            Play <strong>multiple rounds</strong> and keep score!
+        </p>
+        <ul class="description">
+            <li><strong>1 point</strong> for the winning team each round.</li>
+        </ul>
+        <p class="description">The player or team with the <strong>most points</strong> at the end is the ultimate winner! 🏆</p>
+    </div>
+
+    <div class="image-section">
+        <img src="/static/images/rules1.jpeg" alt="Spyfall Game">
+    </div>
+</div>
+
+<footer class="footer">
+    <p>Contact us: <a href="mailto:info@spyfallgame.com">info@spyfallgame.com</a></p>
+</footer>
+
+</body>
+</html>

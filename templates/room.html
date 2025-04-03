@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Spyfall - Místnost</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-room.css') }}">
+</head>
+<body>
+    <header class="page-header">
+        <a href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='images/logo.jpeg') }}" alt="Logo" class="logo-img">
+        </a>
+        <a href="{{ url_for('rules') }}">
+            <img src="{{ url_for('static', filename='images/rules.jpeg') }}" alt="Pravidla" class="rules-img">
+        </a>
+    </header>    
+    <h1>Místnost: {{ room_code }}</h1>
+    <form action="/join_room_post" method="post">
+        <input type="hidden" name="room_code" value="{{ room_code }}">
+        <input type="text" name="username" placeholder="Zadej jméno" required>
+        <button type="submit">Připojit se</button>
+    </form>
+    <h2>Hráči:</h2>
+    <ul>
+        {% for player in players %}
+            <li>{{ player }}</li>
+        {% endfor %}
+    </ul>
+    <form action="/start_game" method="post">
+        <input type="hidden" name="room_code" value="{{ room_code }}">
+        <label for="timer">Délka hry (min):</label>
+        <select name="timer" id="timer">
+            <option value="5">5</option>
+            <option value="8">8</option>
+            <option value="10">10</option>
+        </select>
+        <button type="submit">Spustit hru</button>
+    </form>
+    <h3>Seznam všech možných lokací:</h3>
+    <ul>
+        {% for loc in locations %}
+            <li>{{ loc.name }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

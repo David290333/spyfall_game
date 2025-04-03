@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Spyfall - Hlavní stránka</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-index.css') }}">
+</head>
+<body>
+    <header class="page-header">
+        <a href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='images/logo.jpeg') }}" alt="Logo" class="logo-img">
+        </a>
+        <a href="{{ url_for('rules') }}">
+            <img src="{{ url_for('static', filename='images/rules.jpeg') }}" alt="Pravidla" class="rules-img">
+        </a>
+    </header>    
+    <h1>Spyfall</h1>
+    <form action="/create_room" method="post">
+        <button type="submit">Vytvořit místnost</button>
+    </form>    
+    <form action="/join_room" method="get">
+        <input type="text" name="room_code" placeholder="Zadej kód místnosti" required>
+        <button type="submit">Připojit se</button>
+    </form>
+</body>
+</html>

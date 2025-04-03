@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Spyfall - Hra</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-game.css') }}">
+</head>
+<body>
+    <header class="page-header">
+        <a href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='images/logo.jpeg') }}" alt="Logo" class="logo-img">
+        </a>
+        <a href="{{ url_for('rules') }}">
+            <img src="{{ url_for('static', filename='images/rules.jpeg') }}" alt="Pravidla" class="rules-img">
+        </a>
+    </header>    
+    <h1>Herní místnost: {{ room_code }}</h1>
+
+    {% if is_spy %}
+    <h2>Jsi špión!</h2>
+
+    <img src="{{ url_for('static', filename='images/spy.jpeg') }}" alt="Spy" width="300">
+
+    <h3>Seznam možných lokací:</h3>
+    <ul>
+        {% for loc in all_locations %}
+            <li>{{ loc.name }}</li>
+        {% endfor %}
+    </ul>
+
+{% else %}
+    <h2>Nejsi špión! Lokace: {{ location.name }}</h2>
+    <img src="{{ url_for('static', filename='images/' ~ location.image) }}" alt="Lokace" width="300">
+{% endif %}
+
+    <p>Zbývající čas: <span id="countdown" data-timer="{{ room.timer | default(300) }}"></span></p>
+
+    <form id="endGameForm">
+        <input type="hidden" name="room_code" value="{{ room_code }}">
+        <button type="button" onclick="showGameOverPopup()">Ukončit hru</button>
+    </form>
+    
+<div id="popup" style="display:none; position:fixed; top:20%; left:50%; transform:translateX(-50%);
+                      background:white; border:2px solid black; padding:20px; z-index:1000;">
+    <h3>Konec hry</h3>
+    <p><strong>Špión:</strong> <span id="popupSpy"></span></p>
+    <p><strong>Lokace:</strong> <span id="popupLocation"></span></p>
+    <form action="/room" method="get">
+        <input type="hidden" name="room_code" value="{{ room_code }}">
+        <button type="submit">Zpět do místnosti</button>
+    </form>
+</div>
+
+    <script src="{{ url_for('static', filename='js/game-over-popup.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/timer.js') }}"></script>
+</body>
+</html>
