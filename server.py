@@ -39,6 +39,14 @@ def handle_create_room():
     rooms[room_code] = create_empty_room()
     return redirect(url_for('room', room_code=room_code))
 
+# 🔧 přidáno pro kompatibilitu, pokud by se URL /join_room ještě někde používala
+@app.route('/join_room', methods=['GET'])
+def join_room_redirect():
+    room_code = request.args.get('room_code')
+    if not room_code or room_code not in rooms:
+        return "Místnost neexistuje!", 404
+    return redirect(url_for('room', room_code=room_code))
+
 @app.route('/join_room_post', methods=['POST'])
 def join_room_post():
     room_code = request.form['room_code']

@@ -17,8 +17,10 @@
 
     <h1>Místnost: {{ room_code }}</h1>
 
-    <form action="/room" method="get">
-        <input type="text" name="room_code" placeholder="Zadej kód místnosti" required>
+    <!-- Připojení hráče jménem -->
+    <form action="/join_room_post" method="post">
+        <input type="hidden" name="room_code" value="{{ room_code }}">
+        <input type="text" name="username" placeholder="Zadej jméno" required>
         <button type="submit">Připojit se</button>
     </form>    
 
@@ -29,6 +31,7 @@
         {% endfor %}
     </ul>
 
+    <!-- Spuštění hry -->
     <form action="/start_game" method="post">
         <input type="hidden" name="room_code" value="{{ room_code }}">
         <label for="timer">Délka hry (min):</label>

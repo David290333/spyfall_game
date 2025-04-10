@@ -14,13 +14,18 @@
             <img src="{{ url_for('static', filename='images/rules.jpeg') }}" alt="Pravidla" class="rules-img">
         </a>
     </header>    
+
     <h1>Spyfall</h1>
+
     <form action="/create_room" method="post">
         <button type="submit">Create room</button>
     </form>    
-    <form action="/join_room" method="get">
+
+    <!-- 🔧 změna: správná cesta pro připojení -->
+    <form action="/room" method="get">
         <input type="text" name="room_code" placeholder="Zadej kód místnosti" required>
         <button type="submit">Připojit se</button>
     </form>
+
 </body>
 </html>
