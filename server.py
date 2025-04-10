@@ -205,3 +205,10 @@ def restart_game():
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
+
+@app.route('/room_status')
+def room_status():
+    room_code = request.args.get('room_code')
+    if room_code not in rooms:
+        return jsonify({'error': 'Room not found'}), 404
+    return jsonify({'status': rooms[room_code]['status']})

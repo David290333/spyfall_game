@@ -17,7 +17,6 @@
 
     <h1>Místnost: {{ room_code }}</h1>
 
-    <!-- Připojení hráče jménem -->
     <form action="/join_room_post" method="post">
         <input type="hidden" name="room_code" value="{{ room_code }}">
         <input type="text" name="username" placeholder="Zadej jméno" required>
@@ -31,17 +30,19 @@
         {% endfor %}
     </ul>
 
-    <!-- Spuštění hry -->
-    <form action="/start_game" method="post">
-        <input type="hidden" name="room_code" value="{{ room_code }}">
-        <label for="timer">Délka hry (min):</label>
-        <select name="timer" id="timer">
-            <option value="5">5</option>
-            <option value="8">8</option>
-            <option value="10">10</option>
-        </select>
-        <button type="submit">Spustit hru</button>
-    </form>
+    <!-- Tlačítko pro spuštění hry jen pro hostitele -->
+    {% if session['username'] == room.host %}
+        <form action="/start_game" method="post">
+            <input type="hidden" name="room_code" value="{{ room_code }}">
+            <label for="timer">Délka hry (min):</label>
+            <select name="timer" id="timer">
+                <option value="5">5</option>
+                <option value="8">8</option>
+                <option value="10">10</option>
+            </select>
+            <button type="submit">Spustit hru</button>
+        </form>
+    {% endif %}
 
     <h3>Seznam všech možných lokací:</h3>
     <div class="locations-grid">
@@ -52,5 +53,29 @@
             </div>
         {% endfor %}
     </div>
+
+    <!-- Automatické přesměrování do hry, když se spustí -->
+    <script>
+        const roomCode = "{{ room_code }}";
+        const currentUser = "{{ session['username'] }}";
+
+        async function checkGameStatus() {
+            try {
+                const response = await fetch(`/room_status?room_code=${roomCode}`);
+                const data = await response.json();
+
+                if (data.status === 'in_progress') {
+                    window.location.href = `/game?room_code=${roomCode}&username=${currentUser}`;
+                } else {
+                    setTimeout(checkGameStatus, 2000);
+                }
+            } catch (err) {
+                console.error("Chyba při kontrole stavu hry:", err);
+                setTimeout(checkGameStatus, 3000);
+            }
+        }
+
+        window.addEventListener("DOMContentLoaded", checkGameStatus);
+    </script>
 </body>
 </html>
