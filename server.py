@@ -39,7 +39,6 @@ def handle_create_room():
     rooms[room_code] = create_empty_room()
     return redirect(url_for('room', room_code=room_code))
 
-# 🔧 přidáno pro kompatibilitu, pokud by se URL /join_room ještě někde používala
 @app.route('/join_room', methods=['GET'])
 def join_room_redirect():
     room_code = request.args.get('room_code')
@@ -76,8 +75,15 @@ def room():
     room_code = request.args.get('room_code')
     if room_code not in rooms:
         return "Místnost neexistuje!", 404
-    players = rooms[room_code]['players']
-    return render_template('room.html', room_code=room_code, players=players, locations=locations)
+
+    room = rooms[room_code]
+    return render_template(
+        'room.html',
+        room_code=room_code,
+        players=room['players'],
+        locations=locations,
+        room=room  # 🔧 potřebné pro zobrazení tlačítka hosta
+    )
 
 @app.route('/start_game', methods=['POST'])
 def start_game():
@@ -158,7 +164,8 @@ def game():
     is_spy = role == "spy"
     location = None if is_spy else room['location']
 
-    return render_template('game.html',
+    return render_template(
+        'game.html',
         room_code=room_code,
         is_spy=is_spy,
         location=location,
@@ -203,12 +210,13 @@ def restart_game():
     })
     return redirect(url_for('room', room_code=room_code))
 
-if __name__ == '__main__':
-    app.run(debug=True, port=5001)
-
+# 🔧 Nová pomocná route pro automatické přesměrování po startu hry
 @app.route('/room_status')
 def room_status():
     room_code = request.args.get('room_code')
     if room_code not in rooms:
         return jsonify({'error': 'Room not found'}), 404
     return jsonify({'status': rooms[room_code]['status']})
+
+if __name__ == '__main__':
+    app.run(debug=True, port=5001)
