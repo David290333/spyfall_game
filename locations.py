@@ -7,7 +7,7 @@ locations = [
     {"name": "Airport", "image": "airport.jpeg"},
     {"name": "Disneyland", "image": "disneyland.jpeg"},
     {"name": "Dentist", "image": "dentist.jpeg"},
-    {"name": "Chocolate factory", "image": "chovolate_factory.jpeg"},
+    {"name": "Chocolate factory", "image": "chocolate_factory.jpeg"},
     {"name": "FBI headquarters", "image": "fbi_headquarters.jpeg"},
     {"name": "Court", "image": "court.jpeg"},
     {"name": "Oval office", "image": "oval_office.jpeg"},
