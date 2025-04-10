@@ -1,7 +1,6 @@
 locations = [
     {"name": "Space ship", "image": "space_ship.jpeg"},
     {"name": "Hogwarts", "image": "hogwards.jpeg"},
-    {"name": "Beach", "image": "beach.jpeg"},
     {"name": "University", "image": "university.jpeg"},
     {"name": "Supermarket", "image": "supermarket.jpeg"},
     {"name": "Airport", "image": "airport.jpeg"},
