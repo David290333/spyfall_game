@@ -17,11 +17,10 @@
 
     <h1>Místnost: {{ room_code }}</h1>
 
-    <form action="/join_room_post" method="post">
-        <input type="hidden" name="room_code" value="{{ room_code }}">
-        <input type="text" name="username" placeholder="Zadej jméno" required>
+    <form action="/room" method="get">
+        <input type="text" name="room_code" placeholder="Zadej kód místnosti" required>
         <button type="submit">Připojit se</button>
-    </form>
+    </form>    
 
     <h2>Hráči:</h2>
     <ul>
