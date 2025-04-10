@@ -37,7 +37,8 @@ def rules():
 def handle_create_room():
     room_code = generate_room_code()
     rooms[room_code] = create_empty_room()
-    return jsonify({"room_code": room_code})
+    return redirect(url_for('room', room_code=room_code))
+
 
 @app.route('/join_room_post', methods=['POST'])
 def join_room_post():
