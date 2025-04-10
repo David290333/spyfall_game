@@ -14,18 +14,22 @@
             <img src="{{ url_for('static', filename='images/rules.jpeg') }}" alt="Pravidla" class="rules-img">
         </a>
     </header>    
+
     <h1>Místnost: {{ room_code }}</h1>
+
     <form action="/join_room_post" method="post">
         <input type="hidden" name="room_code" value="{{ room_code }}">
         <input type="text" name="username" placeholder="Zadej jméno" required>
         <button type="submit">Připojit se</button>
     </form>
+
     <h2>Hráči:</h2>
     <ul>
         {% for player in players %}
             <li>{{ player }}</li>
         {% endfor %}
     </ul>
+
     <form action="/start_game" method="post">
         <input type="hidden" name="room_code" value="{{ room_code }}">
         <label for="timer">Délka hry (min):</label>
@@ -36,11 +40,15 @@
         </select>
         <button type="submit">Spustit hru</button>
     </form>
+
     <h3>Seznam všech možných lokací:</h3>
-    <ul>
+    <div class="locations-grid">
         {% for loc in locations %}
-            <li>{{ loc.name }}</li>
+            <div class="location-item" data-location="{{ loc.name }}">
+                <img src="{{ url_for('static', filename='images/' ~ loc.image) }}" alt="{{ loc.name }}">
+                <p>{{ loc.name }}</p>
+            </div>
         {% endfor %}
-    </ul>
+    </div>
 </body>
 </html>

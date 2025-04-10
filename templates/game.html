@@ -13,45 +13,68 @@
         <a href="{{ url_for('rules') }}">
             <img src="{{ url_for('static', filename='images/rules.jpeg') }}" alt="Pravidla" class="rules-img">
         </a>
-    </header>    
+    </header>
+
     <h1>Herní místnost: {{ room_code }}</h1>
 
     {% if is_spy %}
-    <h2>Jsi špión!</h2>
+        <h2>SPY!</h2>
+        <img src="{{ url_for('static', filename='images/spy.jpeg') }}" alt="Spy" width="300">
 
-    <img src="{{ url_for('static', filename='images/spy.jpeg') }}" alt="Spy" width="300">
+        <h3>Seznam možných lokací:</h3>
+        <div class="locations-grid">
+            {% for loc in all_locations %}
+                <div class="location-item" data-location="{{ loc.name }}">
+                    <img src="{{ url_for('static', filename='images/' ~ loc.image) }}" alt="{{ loc.name }}">
+                    <p>{{ loc.name }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <h2>Find who is the spy 👀! Lokace: {{ location.name }}</h2>
+        <img src="{{ url_for('static', filename='images/' ~ location.image) }}" alt="Lokace" width="300">
+    {% endif %}
 
-    <h3>Seznam možných lokací:</h3>
-    <ul>
-        {% for loc in all_locations %}
-            <li>{{ loc.name }}</li>
-        {% endfor %}
-    </ul>
+    <p>Zbývající čas:
+        <span id="countdown"
+              data-timer="{{ room.timer }}"
+              data-paused="{{ room.paused|lower }}">
+        </span>
+    </p>
 
-{% else %}
-    <h2>Nejsi špión! Lokace: {{ location.name }}</h2>
-    <img src="{{ url_for('static', filename='images/' ~ location.image) }}" alt="Lokace" width="300">
-{% endif %}
+    {% if session['username'] == room.host %}
+        <form action="/pause_game" method="post" style="display:inline-block;">
+            <input type="hidden" name="room_code" value="{{ room_code }}">
+            <button type="submit">
+                {% if room.paused %}Pokračovat{% else %}Pauza{% endif %}
+            </button>
+        </form>
 
-    <p>Zbývající čas: <span id="countdown" data-timer="{{ room.timer | default(300) }}"></span></p>
+        <form action="/end_game" method="post" style="display:inline-block;">
+            <input type="hidden" name="room_code" value="{{ room_code }}">
+            <button type="submit">Ukončit hru</button>
+        </form>
+    {% endif %}
 
     <form id="endGameForm">
         <input type="hidden" name="room_code" value="{{ room_code }}">
-        <button type="button" onclick="showGameOverPopup()">Ukončit hru</button>
+        <button type="button" onclick="showGameOverPopup()">Zobrazit výsledek</button>
     </form>
-    
-<div id="popup" style="display:none; position:fixed; top:20%; left:50%; transform:translateX(-50%);
-                      background:white; border:2px solid black; padding:20px; z-index:1000;">
-    <h3>Konec hry</h3>
-    <p><strong>Špión:</strong> <span id="popupSpy"></span></p>
-    <p><strong>Lokace:</strong> <span id="popupLocation"></span></p>
-    <form action="/room" method="get">
-        <input type="hidden" name="room_code" value="{{ room_code }}">
-        <button type="submit">Zpět do místnosti</button>
-    </form>
-</div>
 
+    <div id="popup" style="display:none; position:fixed; top:20%; left:50%; transform:translateX(-50%);
+                          background:white; border:2px solid black; padding:20px; z-index:1000;">
+        <h3>Konec hry</h3>
+        <p><strong>Špión:</strong> <span id="popupSpy"></span></p>
+        <p><strong>Lokace:</strong> <span id="popupLocation"></span></p>
+        <form action="/room" method="get">
+            <input type="hidden" name="room_code" value="{{ room_code }}">
+            <button type="submit">Zpět do místnosti</button>
+        </form>
+    </div>
+
+    <!-- JavaScript soubory -->
     <script src="{{ url_for('static', filename='js/game-over-popup.js') }}"></script>
     <script src="{{ url_for('static', filename='js/timer.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/location-crossing.js') }}"></script>
 </body>
 </html>

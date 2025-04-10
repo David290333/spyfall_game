@@ -68,6 +68,39 @@ button:hover {
     transform: scale(1.05);
 }
 
+/* 🟦 Nové styly pro mřížku lokací */
+.locations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+    margin: 20px auto;
+    max-width: 1000px;
+}
+
+.location-item {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #fff2;
+    border-radius: 10px;
+    padding: 8px;
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.location-item:hover {
+    transform: scale(1.05);
+}
+
+.location-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.location-item.crossed {
+    opacity: 0.3;
+    text-decoration: line-through;
+}
+
 @media (max-width: 768px) {
     body {
         padding: 20px;
