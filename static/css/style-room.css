@@ -43,6 +43,14 @@ button:hover {
     background-color: #3ca7ff;
 }
 
+input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 15px;
+}
+
 .page-header {
     width: 100%;
     display: flex;
@@ -64,7 +72,7 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* 🔽 Grid s lokacemi */
+/* 🔽 Grid lokací */
 .locations-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -87,7 +95,7 @@ button:hover {
     border-radius: 4px;
 }
 
-/* ✅ Verze pro mobilní zařízení */
+/* 📱 Mobilní verze */
 @media (max-width: 768px) {
     body {
         padding: 20px;
@@ -102,19 +110,20 @@ button:hover {
     ul {
         max-width: 100%;
         padding: 15px;
-        border-radius: 8px;
+        border-radius: 6px;
     }
 
     li {
         font-size: 16px;
-        padding: 10px;
+        padding: 8px;
     }
 
+    input[type="text"],
     button {
         width: 100%;
         font-size: 18px;
         padding: 14px 0;
-        margin-bottom: 10px;
+        margin-top: 8px;
     }
 
     .page-header {
@@ -132,9 +141,5 @@ button:hover {
     .locations-grid {
         grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
         gap: 10px;
-    }
-
-    .location-item {
-        padding: 6px;
     }
 }

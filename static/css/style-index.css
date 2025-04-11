@@ -83,39 +83,65 @@ button:hover {
     body {
         padding: 20px;
         background-position: center;
+        background-repeat: no-repeat;
         background-attachment: scroll;
-    }
-
-    h1 {
-        font-size: 32px;
+        background-size: cover;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     .page-header {
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
-        gap: 10px;
+        padding: 10px;
+        margin-bottom: 20px;
     }
 
     .logo-img,
     .rules-img {
-        height: 40px;
+        height: 50px;
     }
 
-    button {
+    h1 {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+
+    form {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    form[action="/create_room"],
+    form[action="/room"] {
+        display: inline-block;
+        width: 48%;
+    }
+
+    form[action="/create_room"] button,
+    form[action="/room"] button {
         width: 100%;
         font-size: 18px;
-        padding: 14px 0;
-        margin: 8px 0;
+        padding: 16px 0;
     }
 
-    .join-form {
+    input[type="text"] {
         width: 100%;
-        max-width: 100%;
-        padding: 0 10px;
+        padding: 14px;
+        font-size: 18px;
+        margin-top: 10px;
+        border-radius: 8px;
+        border: none;
     }
 
-    .join-form input[type="text"],
-    .join-form button {
-        width: 100%;
+    /* Zarovnání obou tlačítek vedle sebe */
+    .button-wrapper {
+        display: flex;
+        gap: 4%;
+        justify-content: space-between;
+        margin-bottom: 20px;
     }
 }
