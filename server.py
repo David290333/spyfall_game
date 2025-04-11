@@ -169,7 +169,7 @@ def game():
         room_code=room_code,
         is_spy=is_spy,
         location=location,
-        room=room,
+        room=room, 
         all_locations=locations
     )
 
@@ -217,6 +217,43 @@ def room_status():
     if room_code not in rooms:
         return jsonify({'error': 'Room not found'}), 404
     return jsonify({'status': rooms[room_code]['status']})
+
+@app.route('/game_status')
+def game_status():
+    room_code = request.args.get('room_code')
+    if room_code not in rooms:
+        return jsonify({'error': 'Room not found'}), 404
+
+    is_over = rooms[room_code]['status'] != 'in_progress'
+    return jsonify({'game_over': is_over})
+
+@app.route('/leave_room')
+def leave_room():
+    room_code = request.args.get('room_code')
+    username = request.args.get('username')
+
+    if room_code in rooms and username in rooms[room_code]['players']:
+        rooms[room_code]['players'].remove(username)
+
+        # pokud hráč byl hostitelem, předáme hostitelství dalšímu hráči
+        if rooms[room_code]['host'] == username:
+            if rooms[room_code]['players']:
+                rooms[room_code]['host'] = rooms[room_code]['players'][0]
+            else:
+                rooms[room_code]['host'] = None
+
+    return '', 204  # no content
+
+@app.route('/update_timer', methods=['POST'])
+def update_timer():
+    data = request.get_json()
+    room_code = data.get('room_code')
+    seconds = data.get('seconds')
+
+    if room_code in rooms:
+        rooms[room_code]['timer'] = seconds
+        return '', 204
+    return 'Room not found', 404
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
