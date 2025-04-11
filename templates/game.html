@@ -43,6 +43,8 @@
         </span>
     </p>
 
+    <input type="hidden" name="room_code" value="{{ room_code }}">
+
     {% if session['username'] == room.host %}
         <form action="/pause_game" method="post" style="display:inline-block;">
             <input type="hidden" name="room_code" value="{{ room_code }}">
@@ -73,7 +75,6 @@
         </form>
     </div>
 
-    <!-- JavaScript soubory -->
     <script src="{{ url_for('static', filename='js/game-over-popup.js') }}"></script>
     <script src="{{ url_for('static', filename='js/timer.js') }}"></script>
     <script src="{{ url_for('static', filename='js/location-crossing.js') }}"></script>

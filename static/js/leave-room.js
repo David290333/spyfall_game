@@ -1,6 +1,6 @@
 window.addEventListener("beforeunload", function () {
     const roomCodeEl = document.querySelector('input[name="room_code"]');
-    const usernameEl = document.querySelector('meta[name="username"]'); // budeme potřebovat
+    const usernameEl = document.querySelector('meta[name="username"]');
 
     if (!roomCodeEl || !usernameEl) return;
 

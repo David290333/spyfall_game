@@ -2,6 +2,7 @@
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
+    <meta name="username" content="{{ session['username'] }}">
     <title>Spyfall - Místnost</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style-room.css') }}">
 </head>
@@ -30,7 +31,6 @@
         {% endfor %}
     </ul>    
 
-    <!-- Tlačítko pro spuštění hry jen pro hostitele -->
     {% if session['username'] == room.host %}
         <form action="/start_game" method="post">
             <input type="hidden" name="room_code" value="{{ room_code }}">
@@ -54,7 +54,8 @@
         {% endfor %}
     </div>
 
-    <!-- Automatické přesměrování do hry, když se spustí -->
+    <input type="hidden" name="room_code" value="{{ room_code }}">
+
     <script>
         const roomCode = "{{ room_code }}";
         const currentUser = "{{ session['username'] }}";
@@ -77,7 +78,7 @@
 
         window.addEventListener("DOMContentLoaded", checkGameStatus);
     </script>
-    <script src="{{ url_for('static', filename='js/leave-room.js') }}"></script>
     <script src="{{ url_for('static', filename='js/player-list.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/leave-room.js') }}"></script>
 </body>
 </html>
