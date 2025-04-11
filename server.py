@@ -146,6 +146,8 @@ def end_game():
     if room['host'] != username:
         return "Pouze host může ukončit hru.", 403
 
+    room['status'] = 'finished'  # ⬅️ klíčová změna!
+
     return redirect(url_for('game_over', room_code=room_code))
 
 @app.route('/game')
@@ -227,7 +229,7 @@ def game_status():
     if room_code not in rooms:
         return jsonify({'error': 'Room not found'}), 404
 
-    is_over = rooms[room_code]['status'] != 'in_progress'
+    is_over = rooms[room_code]['status'] == 'finished'
     return jsonify({'game_over': is_over})
 
 @app.route('/leave_room')
