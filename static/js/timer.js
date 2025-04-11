@@ -11,7 +11,7 @@ window.addEventListener("DOMContentLoaded", function () {
                 body: JSON.stringify({ room_code: roomCode, seconds: remaining })
             });
         } catch (err) {
-            console.error("Chyba při ukládání času:", err);
+            console.error("An error occurred while saving the time:", err);
         }
     }
 
@@ -24,7 +24,7 @@ window.addEventListener("DOMContentLoaded", function () {
                 countdownEl.dataset.paused = data.paused.toString();
             }
         } catch (err) {
-            console.error("Chyba při kontrole pauzy:", err);
+            console.error("An error occurred while checking the pause status:", err);
         } finally {
             setTimeout(pollPausedStatus, 3000);
         }

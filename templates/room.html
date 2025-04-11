@@ -21,10 +21,10 @@
     <form action="/join_room_post" method="post">
         <input type="hidden" name="room_code" value="{{ room_code }}">
         <input type="text" name="username" placeholder="Zadej jméno" required>
-        <button type="submit">Připojit se</button>
+        <button type="submit">Join game/button>
     </form>    
 
-    <h2>Hráči:</h2>
+    <h2>Players:</h2>
     <ul id="playerList">
         {% for player in players %}
             <li>{{ player }}</li>
@@ -71,7 +71,7 @@
                     setTimeout(checkGameStatus, 2000);
                 }
             } catch (err) {
-                console.error("Chyba při kontrole stavu hry:", err);
+                console.error("Error while checking the game state:", err);
                 setTimeout(checkGameStatus, 3000);
             }
         }

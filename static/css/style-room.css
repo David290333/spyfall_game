@@ -1,9 +1,11 @@
+/* === ZÁKLADNÍ STYL === */
 body {
     background-color: #040714;
     font-family: 'Roboto', sans-serif;
     color: #ffffff;
     text-align: center;
     padding: 40px;
+    margin: 0;
     background: url("../images/background.jpg") no-repeat center center fixed;
     background-size: cover;
 }
@@ -13,7 +15,8 @@ h1 {
     margin-bottom: 20px;
 }
 
-ul {
+/* === SEZNAM HRÁČŮ === */
+ul#playerList {
     list-style: none;
     padding: 0;
     margin: 0 auto 30px;
@@ -21,13 +24,20 @@ ul {
     background-color: #1a1d29;
     border-radius: 10px;
     padding: 20px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
 }
 
-li {
+ul#playerList li {
     padding: 10px;
     border-bottom: 1px solid #333;
+    font-size: 18px;
 }
 
+ul#playerList li:last-child {
+    border-bottom: none;
+}
+
+/* === TLAČÍTKA === */
 button {
     background-color: #1f80e0;
     border: none;
@@ -43,6 +53,7 @@ button:hover {
     background-color: #3ca7ff;
 }
 
+/* === HLAVIČKA === */
 .page-header {
     width: 100%;
     display: flex;
@@ -64,7 +75,7 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* 🔽 NOVÉ styly pro grid s lokacemi */
+/* === MŘÍŽKA LOKACÍ === */
 .locations-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -79,6 +90,12 @@ button:hover {
     border-radius: 10px;
     padding: 8px;
     text-align: center;
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.location-item:hover {
+    transform: scale(1.05);
 }
 
 .location-item img {
@@ -87,6 +104,7 @@ button:hover {
     border-radius: 4px;
 }
 
+/* === MOBILNÍ VERZE === */
 @media (max-width: 768px) {
     body {
         padding: 20px;
@@ -98,13 +116,13 @@ button:hover {
         font-size: 28px;
     }
 
-    ul {
+    ul#playerList {
         max-width: 100%;
         padding: 15px;
         border-radius: 6px;
     }
 
-    li {
+    ul#playerList li {
         font-size: 16px;
         padding: 8px;
     }
@@ -113,6 +131,7 @@ button:hover {
         width: 100%;
         font-size: 18px;
         padding: 14px 0;
+        margin: 10px 0;
     }
 
     .page-header {
@@ -125,5 +144,9 @@ button:hover {
     .logo-img,
     .rules-img {
         height: 40px;
+    }
+
+    .locations-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     }
 }

@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 setTimeout(pollGameStatus, 3000);
             }
         } catch (err) {
-            console.error("Chyba při kontrole konce hry:", err);
+            console.error("Error occurred while checking for the end of the game:", err);
             setTimeout(pollGameStatus, 5000);
         }
     }

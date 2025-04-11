@@ -1,13 +1,14 @@
-/* Základní reset */
+/* === RESET === */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* === TĚLO STRÁNKY === */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #040714; /* Disney dark */
+    background-color: #040714;
     color: #ffffff;
     min-height: 100vh;
     display: flex;
@@ -15,7 +16,7 @@ body {
     align-items: center;
 }
 
-/* Header */
+/* === HLAVIČKA === */
 .header {
     width: 100%;
     background-color: #0c0c28;
@@ -26,88 +27,91 @@ body {
 
 .header .logo {
     color: #ffffff;
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 32px;
+    font-weight: 700;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .header .logo:hover {
-    color: #1f80e0; /* Disney blue */
+    color: #1f80e0;
 }
 
-/* Container */
+/* === OBSAH === */
 .container {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     gap: 40px;
     max-width: 1200px;
-    padding: 40px 20px;
-    margin-top: 30px;
+    padding: 40px 30px;
+    margin-top: 40px;
     background-color: #1a1d29;
-    border-radius: 10px;
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    width: 90%;
 }
 
-/* Text content */
+/* === TEXTOVÁ ČÁST === */
 .text-section {
     flex: 1;
     color: #e5e5e5;
+    padding-right: 20px;
 }
 
 .title {
-    font-size: 42px;
-    font-weight: 700;
-    margin-bottom: 20px;
+    font-size: 44px;
+    font-weight: 800;
+    margin-bottom: 25px;
     color: #ffffff;
 }
 
 .section-title {
     font-size: 24px;
     font-weight: 700;
-    margin-top: 30px;
-    margin-bottom: 10px;
+    margin: 30px 0 10px;
     color: #1f80e0;
 }
 
 .description {
     font-size: 18px;
-    line-height: 1.6;
-    margin-bottom: 15px;
+    line-height: 1.7;
+    margin-bottom: 18px;
     color: #c4c4c4;
 }
 
 ul, ol {
-    margin-left: 20px;
+    margin-left: 25px;
     margin-bottom: 20px;
 }
 
 ul li, ol li {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    font-size: 17px;
 }
 
-/* Obrázek */
+/* === OBRÁZEK === */
 .image-section {
     flex: 1;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: flex-start;
+    padding-left: 20px;
 }
 
 .image-section img {
     max-width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
-/* Footer */
+/* === PATIČKA === */
 .footer {
     width: 100%;
     background-color: #0c0c28;
     text-align: center;
-    padding: 15px 0;
-    margin-top: 40px;
+    padding: 20px 0;
+    margin-top: 60px;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
 }
 
 .footer p {
@@ -124,12 +128,13 @@ ul li, ol li {
     color: #3ca7ff;
 }
 
-/* Responsivita */
+/* === MOBILNÍ ZOBRAZENÍ === */
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
-        gap: 20px;
-        padding: 20px 10px;
+        gap: 30px;
+        padding: 25px 20px;
+        margin-top: 20px;
     }
 
     .text-section {
@@ -147,25 +152,24 @@ ul li, ol li {
 
     .description {
         font-size: 16px;
+        line-height: 1.6;
+    }
+
+    ul, ol {
+        margin-left: 15px;
+        padding-left: 10px;
+    }
+
+    ul li, ol li {
+        font-size: 15px;
     }
 
     .image-section {
-        padding: 10px;
+        padding: 0;
     }
 
     .image-section img {
         max-width: 90%;
-    }
-
-    .page-header {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        padding: 10px;
-    }
-
-    .logo-img,
-    .rules-img {
-        height: 40px;
+        height: auto;
     }
 }

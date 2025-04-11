@@ -1,11 +1,13 @@
+/* === ZÁKLAD === */
 body {
-    background-color: #040714;
     font-family: 'Roboto', sans-serif;
-    color: #ffffff;
-    text-align: center;
-    padding: 40px;
+    background-color: #040714;
     background: url("../images/background.jpg") no-repeat center center fixed;
     background-size: cover;
+    color: #ffffff;
+    text-align: center;
+    padding: 40px 20px;
+    margin: 0;
 }
 
 h1 {
@@ -32,6 +34,7 @@ img {
     color: #ccc;
 }
 
+/* === TLAČÍTKA === */
 button {
     background-color: #1f80e0;
     border: none;
@@ -41,12 +44,14 @@ button {
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.3s ease;
+    margin: 10px auto;
 }
 
 button:hover {
     background-color: #3ca7ff;
 }
 
+/* === HLAVIČKA === */
 .page-header {
     width: 100%;
     display: flex;
@@ -68,22 +73,25 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* 🟦 Nové styly pro mřížku lokací */
+/* === MŘÍŽKA LOKACÍ === */
 .locations-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 12px;
+    gap: 16px;
     margin: 20px auto;
     max-width: 1000px;
 }
 
 .location-item {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid #fff2;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid #ffffff22;
     border-radius: 10px;
     padding: 8px;
     transition: transform 0.2s;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .location-item:hover {
@@ -94,6 +102,7 @@ button:hover {
     max-width: 100%;
     height: auto;
     border-radius: 4px;
+    margin-bottom: 6px;
 }
 
 .location-item.crossed {
@@ -101,6 +110,24 @@ button:hover {
     text-decoration: line-through;
 }
 
+/* === POPUP OKNO === */
+#popup {
+    display: none;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    color: black;
+    border: 2px solid black;
+    padding: 20px;
+    z-index: 1000;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+}
+
+/* === MOBILNÍ VERZE === */
 @media (max-width: 768px) {
     body {
         padding: 20px;
@@ -141,5 +168,14 @@ button:hover {
     .logo-img,
     .rules-img {
         height: 40px;
+    }
+
+    .locations-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .location-item {
+        padding: 6px;
     }
 }

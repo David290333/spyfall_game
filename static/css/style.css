@@ -1,34 +1,22 @@
+/* === ZÁKLAD === */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     text-align: center;
+    margin: 0;
+    padding: 40px 20px;
     background-color: #f4f4f4;
     background: url("../images/background.jpg") no-repeat center center fixed;
     background-size: cover;
-}
-
-header {
-    background-color: #007bff;
     color: white;
-    padding: 10px 0;
 }
 
 h1 {
-    margin: 0;
+    font-size: 48px;
+    margin-bottom: 30px;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-button {
-    padding: 10px 20px;
-    margin: 10px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
+/* === HLAVIČKA === */
+header,
 .page-header {
     width: 100%;
     display: flex;
@@ -36,6 +24,7 @@ button {
     align-items: center;
     padding: 20px;
     box-sizing: border-box;
+    background-color: transparent;
 }
 
 .logo-img,
@@ -48,4 +37,91 @@ button {
 .logo-img:hover,
 .rules-img:hover {
     transform: scale(1.05);
+}
+
+/* === NAVIGACE === */
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 16px;
+}
+
+/* === TLAČÍTKA === */
+button {
+    background-color: #1f80e0;
+    border: none;
+    padding: 14px 25px;
+    color: white;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin: 10px;
+}
+
+button:hover {
+    background-color: #3ca7ff;
+}
+
+/* === FORMULÁŘ === */
+form {
+    margin: 20px auto;
+    max-width: 300px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+/* === MOBILNÍ VERZE === */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+        background-position: center;
+        background-attachment: scroll;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    .page-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .logo-img,
+    .rules-img {
+        height: 40px;
+    }
+
+    button {
+        width: 100%;
+        font-size: 18px;
+        padding: 14px 0;
+        margin: 8px 0;
+    }
+
+    nav a {
+        display: block;
+        margin: 10px 0;
+    }
+
+    input[type="text"] {
+        width: 100%;
+    }
+
+    form {
+        width: 100%;
+        padding: 0 10px;
+    }
 }

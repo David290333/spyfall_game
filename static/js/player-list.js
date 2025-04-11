@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             }
         } catch (err) {
-            console.error("Chyba při načítání hráčů:", err);
+            console.error("An error occurred while loading the players:", err);
         } finally {
             setTimeout(updatePlayerList, 3000); // kontroluj každé 3 sekundy
         }
