@@ -164,4 +164,8 @@ ul li, ol li {
     .image-section {
         display: none; /* ❌ Obrázek se skryje jen na mobilu */
     }
+
+    .page-header {
+        display: none;
+    }
 }

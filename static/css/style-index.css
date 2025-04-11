@@ -81,15 +81,9 @@ button:hover {
 /* === MOBILNÍ VERZE === */
 @media (max-width: 768px) {
     body {
-        padding: 20px;
+        padding: 20px 10px;
         background-position: center;
         background-attachment: scroll;
-        min-height: 100vh;
-        background-size: cover;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
     }
 
     h1 {
@@ -100,44 +94,32 @@ button:hover {
     .page-header {
         flex-direction: column;
         align-items: center;
-        gap: 10px;
-        padding: 10px;
+        gap: 12px;
+        padding: 12px;
     }
 
     .logo-img,
     .rules-img {
-        height: 50px;
+        height: 40px;
     }
 
-    form[action="/create_room"],
-    form[action="/room"] {
+    button {
         width: 100%;
-        max-width: 400px;
-    }
-
-    form[action="/create_room"] button,
-    form[action="/room"] button {
         font-size: 18px;
         padding: 14px 0;
-        width: 48%;
+        margin-top: 10px;
     }
 
-    form[action="/room"] input[type="text"] {
+    .join-form {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .join-form input[type="text"],
+    .join-form button {
         width: 100%;
-        padding: 14px;
         font-size: 16px;
-        margin-bottom: 10px;
-        border-radius: 8px;
-        border: none;
-        box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Buttony vedle sebe */
-    form[action="/create_room"],
-    form[action="/room"] {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 10px;
+        padding: 14px 12px;
+        margin: 8px 0;
     }
 }

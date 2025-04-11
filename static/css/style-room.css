@@ -37,6 +37,17 @@ button {
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.3s ease;
+    height: 46px;
+}
+
+input[type="text"] {
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    height: 46px;
+    box-sizing: border-box;
 }
 
 button:hover {
@@ -89,7 +100,7 @@ button:hover {
 /* ✅ Mobilní verze */
 @media (max-width: 768px) {
     body {
-        padding: 20px;
+        padding: 20px 10px;
         background-position: center;
         background-attachment: scroll;
     }
@@ -102,6 +113,7 @@ button:hover {
         max-width: 100%;
         padding: 15px;
         border-radius: 6px;
+        margin-bottom: 20px;
     }
 
     li {
@@ -109,10 +121,12 @@ button:hover {
         padding: 8px;
     }
 
-    button {
+    button,
+    input[type="text"] {
         width: 100%;
-        font-size: 18px;
-        padding: 14px 0;
+        font-size: 16px;
+        padding: 14px 12px;
+        margin-bottom: 10px;
     }
 
     .page-header {
@@ -125,5 +139,19 @@ button:hover {
     .logo-img,
     .rules-img {
         height: 40px;
+    }
+
+    .locations-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 10px;
+        padding: 0 10px;
+    }
+
+    .location-item {
+        padding: 6px;
+    }
+
+    .location-item img {
+        border-radius: 4px;
     }
 }

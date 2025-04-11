@@ -130,21 +130,22 @@ button:hover {
 /* === MOBILNÍ VERZE === */
 @media (max-width: 768px) {
     body {
-        padding: 20px;
+        padding: 20px 10px;
         background-position: center;
         background-attachment: scroll;
     }
 
     h1 {
-        font-size: 28px;
+        font-size: 26px;
     }
 
     h2 {
-        font-size: 22px;
+        font-size: 20px;
+        margin-bottom: 16px;
     }
 
     #countdown {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     button {
@@ -153,16 +154,11 @@ button:hover {
         padding: 14px 0;
     }
 
-    img {
-        width: 100%;
-        height: auto;
-    }
-
     .page-header {
         flex-direction: column;
         align-items: center;
         gap: 10px;
-        padding: 10px;
+        padding: 10px 0;
     }
 
     .logo-img,
@@ -171,11 +167,24 @@ button:hover {
     }
 
     .locations-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
         gap: 12px;
+        max-width: 100%;
     }
 
     .location-item {
         padding: 6px;
+    }
+
+    .location-item img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    #popup {
+        top: 15%;
+        width: 95%;
+        padding: 16px;
+        font-size: 16px;
     }
 }
