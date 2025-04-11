@@ -2,6 +2,7 @@
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="username" content="{{ session['username'] }}">
     <title>Spyfall - Game</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style-game.css') }}">
@@ -59,12 +60,12 @@
         </form>
     {% endif %}
 
-    <form id="endGameForm">
+    <!-- <form id="endGameForm">
         <input type="hidden" name="room_code" value="{{ room_code }}">
         <button type="button" id="showResultBtn" onclick="showGameOverPopup()" disabled>
             Zobrazit výsledek
         </button>
-    </form>
+    </form> -->
     
 
     <div id="popup" style="display:none; position:fixed; top:20%; left:50%; transform:translateX(-50%);

@@ -1,11 +1,9 @@
-/* === ZÁKLADNÍ STYL === */
 body {
     background-color: #040714;
     font-family: 'Roboto', sans-serif;
     color: #ffffff;
     text-align: center;
     padding: 40px;
-    margin: 0;
     background: url("../images/background.jpg") no-repeat center center fixed;
     background-size: cover;
 }
@@ -15,8 +13,7 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* === SEZNAM HRÁČŮ === */
-ul#playerList {
+ul {
     list-style: none;
     padding: 0;
     margin: 0 auto 30px;
@@ -24,20 +21,13 @@ ul#playerList {
     background-color: #1a1d29;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
 }
 
-ul#playerList li {
+li {
     padding: 10px;
     border-bottom: 1px solid #333;
-    font-size: 18px;
 }
 
-ul#playerList li:last-child {
-    border-bottom: none;
-}
-
-/* === TLAČÍTKA === */
 button {
     background-color: #1f80e0;
     border: none;
@@ -53,7 +43,6 @@ button:hover {
     background-color: #3ca7ff;
 }
 
-/* === HLAVIČKA === */
 .page-header {
     width: 100%;
     display: flex;
@@ -75,7 +64,7 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* === MŘÍŽKA LOKACÍ === */
+/* 🔽 Grid s lokacemi */
 .locations-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -90,12 +79,6 @@ button:hover {
     border-radius: 10px;
     padding: 8px;
     text-align: center;
-    transition: transform 0.2s;
-    cursor: pointer;
-}
-
-.location-item:hover {
-    transform: scale(1.05);
 }
 
 .location-item img {
@@ -104,7 +87,7 @@ button:hover {
     border-radius: 4px;
 }
 
-/* === MOBILNÍ VERZE === */
+/* ✅ Verze pro mobilní zařízení */
 @media (max-width: 768px) {
     body {
         padding: 20px;
@@ -116,22 +99,22 @@ button:hover {
         font-size: 28px;
     }
 
-    ul#playerList {
+    ul {
         max-width: 100%;
         padding: 15px;
-        border-radius: 6px;
+        border-radius: 8px;
     }
 
-    ul#playerList li {
+    li {
         font-size: 16px;
-        padding: 8px;
+        padding: 10px;
     }
 
     button {
         width: 100%;
         font-size: 18px;
         padding: 14px 0;
-        margin: 10px 0;
+        margin-bottom: 10px;
     }
 
     .page-header {
@@ -148,5 +131,10 @@ button:hover {
 
     .locations-grid {
         grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 10px;
+    }
+
+    .location-item {
+        padding: 6px;
     }
 }
