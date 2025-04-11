@@ -2,7 +2,7 @@
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <title>Spyfall - Konec hry</title>
+    <title>Spyfall - Time's up</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style-gameover.css') }}">
 </head>
 <body>
@@ -14,13 +14,13 @@
             <img src="{{ url_for('static', filename='images/rules.jpeg') }}" alt="Pravidla" class="rules-img">
         </a>
     </header>    
-    <h1>Konec hry</h1>
-    <p>Špión byl: <strong>{{ spy }}</strong></p>
-    <p>Lokace byla: <strong>{{ location.name }}</strong></p>
+    <h1>Time's up</h1>
+    <p>Spy: <strong>{{ spy }}</strong></p>
+    <p>Location: <strong>{{ location.name }}</strong></p>
 
     <form action="/restart_game" method="post">
         <input type="hidden" name="room_code" value="{{ room_code }}">
-        <button type="submit">Hrát znovu</button>
+        <button type="submit">Play again</button>
     </form>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="username" content="{{ session['username'] }}">
-    <title>Spyfall - Hra</title>
+    <title>Spyfall - Game</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style-game.css') }}">
 </head>
 <body>
@@ -16,13 +16,13 @@
         </a>
     </header>
 
-    <h1>Herní místnost: {{ room_code }}</h1>
+    <h1>Room code: {{ room_code }}</h1>
 
     {% if is_spy %}
         <h2>SPY!</h2>
         <img src="{{ url_for('static', filename='images/spy.jpeg') }}" alt="Spy" width="300">
 
-        <h3>Seznam možných lokací:</h3>
+        <h3>Possible locations:</h3>
         <div class="locations-grid">
             {% for loc in all_locations %}
                 <div class="location-item" data-location="{{ loc.name }}">
@@ -32,11 +32,11 @@
             {% endfor %}
         </div>
     {% else %}
-        <h2>Find who is the spy 👀! Lokace: {{ location.name }}</h2>
+        <h2>Find who is the spy! Location: {{ location.name }}</h2>
         <img src="{{ url_for('static', filename='images/' ~ location.image) }}" alt="Lokace" width="300">
     {% endif %}
 
-    <p>Zbývající čas:
+    <p>Time remaining:
         <span id="countdown"
               data-timer="{{ room.timer }}"
               data-paused="{{ room.paused|lower }}">
@@ -55,14 +55,17 @@
 
         <form action="/end_game" method="post" style="display:inline-block;">
             <input type="hidden" name="room_code" value="{{ room_code }}">
-            <button type="submit">Ukončit hru</button>
+            <button type="submit">End game</button>
         </form>
     {% endif %}
 
     <form id="endGameForm">
         <input type="hidden" name="room_code" value="{{ room_code }}">
-        <button type="button" onclick="showGameOverPopup()">Zobrazit výsledek</button>
+        <button type="button" id="showResultBtn" onclick="showGameOverPopup()" disabled>
+            Zobrazit výsledek
+        </button>
     </form>
+    
 
     <div id="popup" style="display:none; position:fixed; top:20%; left:50%; transform:translateX(-50%);
                           background:white; border:2px solid black; padding:20px; z-index:1000;">
@@ -71,7 +74,7 @@
         <p><strong>Lokace:</strong> <span id="popupLocation"></span></p>
         <form action="/room" method="get">
             <input type="hidden" name="room_code" value="{{ room_code }}">
-            <button type="submit">Zpět do místnosti</button>
+            <button type="submit">Back to the room</button>
         </form>
     </div>
 

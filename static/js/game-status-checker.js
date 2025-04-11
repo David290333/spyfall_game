@@ -7,7 +7,11 @@ document.addEventListener("DOMContentLoaded", function () {
             const data = await res.json();
 
             if (data.game_over) {
-                window.location.href = `/game_over?room_code=${roomCode}`;
+                const resultBtn = document.getElementById("showResultBtn");
+                if (resultBtn) resultBtn.disabled = false;
+
+                // případně přesměrování automaticky:
+                // window.location.href = `/game_over?room_code=${roomCode}`;
             } else {
                 setTimeout(pollGameStatus, 3000);
             }
