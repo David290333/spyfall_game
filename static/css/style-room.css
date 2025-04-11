@@ -3,7 +3,7 @@ body {
     font-family: 'Roboto', sans-serif;
     color: #ffffff;
     text-align: center;
-    padding: 40px 20px;
+    padding: 40px;
     background: url("../images/background.jpg") no-repeat center center fixed;
     background-size: cover;
 }
@@ -11,36 +11,6 @@ body {
 h1 {
     font-size: 36px;
     margin-bottom: 20px;
-}
-
-form {
-    margin: 20px 0;
-}
-
-input[type="text"] {
-    padding: 14px 20px;
-    font-size: 16px;
-    border-radius: 8px;
-    border: none;
-    width: 100%;
-    max-width: 300px;
-    margin-bottom: 10px;
-}
-
-button {
-    background-color: #1f80e0;
-    border: none;
-    padding: 12px 25px;
-    color: #fff;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    margin-top: 10px;
-}
-
-button:hover {
-    background-color: #3ca7ff;
 }
 
 ul {
@@ -58,7 +28,21 @@ li {
     border-bottom: 1px solid #333;
 }
 
-/* Hlavička */
+button {
+    background-color: #1f80e0;
+    border: none;
+    padding: 12px 25px;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #3ca7ff;
+}
+
 .page-header {
     width: 100%;
     display: flex;
@@ -80,18 +64,17 @@ li {
     transform: scale(1.05);
 }
 
-/* Grid pro lokace */
 .locations-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     gap: 12px;
     margin: 20px auto;
     max-width: 1000px;
-    padding: 0 10px;
 }
 
 .location-item {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #fff2;
     border-radius: 10px;
     padding: 8px;
     text-align: center;
@@ -103,36 +86,33 @@ li {
     border-radius: 4px;
 }
 
-/* Mobilní verze */
+/* ✅ Mobilní verze */
 @media (max-width: 768px) {
     body {
         padding: 20px;
-        background-attachment: scroll;
         background-position: center;
+        background-attachment: scroll;
     }
 
     h1 {
         font-size: 28px;
     }
 
-    input[type="text"] {
-        width: 90%;
-        max-width: none;
-        font-size: 16px;
-    }
-
-    button {
-        width: 90%;
-        font-size: 18px;
-    }
-
     ul {
-        width: 100%;
+        max-width: 100%;
         padding: 15px;
+        border-radius: 6px;
     }
 
     li {
         font-size: 16px;
+        padding: 8px;
+    }
+
+    button {
+        width: 100%;
+        font-size: 18px;
+        padding: 14px 0;
     }
 
     .page-header {
@@ -145,9 +125,5 @@ li {
     .logo-img,
     .rules-img {
         height: 40px;
-    }
-
-    .locations-grid {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     }
 }
