@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const roomCode = document.querySelector("input[name='room_code']")?.value;
+    const roomCode = document.querySelector('input[name="room_code"]').value;
 
     async function pollGameStatus() {
         try {
@@ -12,12 +12,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 setTimeout(pollGameStatus, 3000);
             }
         } catch (err) {
-            console.error("Chyba při kontrole stavu hry:", err);
+            console.error("Chyba při kontrole konce hry:", err);
             setTimeout(pollGameStatus, 5000);
         }
     }
 
-    if (roomCode) {
-        pollGameStatus();
-    }
+    pollGameStatus();
 });

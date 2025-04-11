@@ -216,7 +216,10 @@ def room_status():
     room_code = request.args.get('room_code')
     if room_code not in rooms:
         return jsonify({'error': 'Room not found'}), 404
-    return jsonify({'status': rooms[room_code]['status']})
+    return jsonify({
+        'status': rooms[room_code]['status'],
+        'paused': rooms[room_code]['paused']
+    })
 
 @app.route('/game_status')
 def game_status():
@@ -254,6 +257,13 @@ def update_timer():
         rooms[room_code]['timer'] = seconds
         return '', 204
     return 'Room not found', 404
+
+@app.route('/player_list')
+def player_list():
+    room_code = request.args.get('room_code')
+    if room_code not in rooms:
+        return jsonify({'error': 'Room not found'}), 404
+    return jsonify({'players': rooms[room_code]['players']})
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)

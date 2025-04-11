@@ -15,22 +15,36 @@ window.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    async function pollPausedStatus() {
+        try {
+            const res = await fetch(`/room_status?room_code=${roomCode}`);
+            const data = await res.json();
+
+            if (data.paused !== undefined) {
+                countdownEl.dataset.paused = data.paused.toString();
+            }
+        } catch (err) {
+            console.error("Chyba při kontrole pauzy:", err);
+        } finally {
+            setTimeout(pollPausedStatus, 3000);
+        }
+    }
+
     function updateCountdown() {
         let min = Math.floor(seconds / 60);
         let sec = seconds % 60;
         countdownEl.textContent = `${min}:${sec.toString().padStart(2, '0')}`;
 
-        // Dynamicky zkontroluj, jestli je pauza AKTUÁLNÍ
         const isPaused = countdownEl.dataset.paused === "true";
 
         if (seconds > 0 && !isPaused) {
             seconds--;
             updateTimerOnServer(seconds);
-            setTimeout(updateCountdown, 1000);
-        } else {
-            setTimeout(updateCountdown, 1000); // pokračuj v kontrole pauzy
         }
+
+        setTimeout(updateCountdown, 1000); // vždy pokračuj ve smyčce
     }
 
-    updateCountdown();
+    pollPausedStatus();   // spuštění kontroly pauzy
+    updateCountdown();    // spuštění odpočtu
 });

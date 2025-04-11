@@ -24,11 +24,11 @@
     </form>    
 
     <h2>Hráči:</h2>
-    <ul>
+    <ul id="playerList">
         {% for player in players %}
             <li>{{ player }}</li>
         {% endfor %}
-    </ul>
+    </ul>    
 
     <!-- Tlačítko pro spuštění hry jen pro hostitele -->
     {% if session['username'] == room.host %}
@@ -78,5 +78,6 @@
         window.addEventListener("DOMContentLoaded", checkGameStatus);
     </script>
     <script src="{{ url_for('static', filename='js/leave-room.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/player-list.js') }}"></script>
 </body>
 </html>
