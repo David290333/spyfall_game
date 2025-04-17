@@ -35,6 +35,16 @@
     {% else %}
         <h2>Find who is the spy! Location: {{ location.name }}</h2>
         <img src="{{ url_for('static', filename='images/' ~ location.image) }}" alt="Lokace" width="300">
+
+        <h3>Possible locations:</h3>
+        <div class="locations-grid">
+            {% for loc in all_locations %}
+                <div class="location-item" data-location="{{ loc.name }}">
+                    <img src="{{ url_for('static', filename='images/' ~ loc.image) }}" alt="{{ loc.name }}">
+                    <p>{{ loc.name }}</p>
+                </div>
+            {% endfor %}
+        </div>
     {% endif %}
 
     <p>Time remaining:
