@@ -114,6 +114,7 @@ button:hover {
         padding: 15px;
         border-radius: 6px;
         margin-bottom: 20px;
+        min-height: 200px;
     }
 
     li {
@@ -138,7 +139,9 @@ button:hover {
 
     .logo-img,
     .rules-img {
-        height: 40px;
+        height: 50px;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
     }
 
     .locations-grid {
@@ -154,4 +157,12 @@ button:hover {
     .location-item img {
         border-radius: 4px;
     }
+
+    .timer {
+        font-size: 16px;
+        padding: 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
 }
