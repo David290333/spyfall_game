@@ -100,10 +100,19 @@ button:hover {
 /* ✅ Mobilní verze */
 @media (max-width: 768px) {
     .page-header {
+        width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 12px 20px;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    
+    .logo-img,
+    .rules-img {
+        height: 50px;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
     }
     
     body {
@@ -168,8 +177,9 @@ button:hover {
     #timer {
         font-size: 16px;
         padding: 10px;
-        width: 100%;
+        width: 50%;
         box-sizing: border-box;
+        margin-bottom: 10px;
     }    
 
 }

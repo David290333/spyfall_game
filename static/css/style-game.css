@@ -158,6 +158,7 @@ button:hover {
         width: 120%;
         font-size: 18px;
         padding: 14px 0;
+        margin: 20px;
     }
 
     .page-header {
