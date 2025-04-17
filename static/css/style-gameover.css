@@ -87,9 +87,15 @@ button:hover {
     }
     
     body {
-        padding: 30px 15px;
+        padding: 20px 10px;
         background-position: center;
         background-attachment: scroll;
+        background-color: #f4f4f4;
+        background: url("../images/background.jpg") no-repeat center center fixed;
+        background-size: cover !important;
+        margin: 0;
+        padding: 40px 20px;
+        color: white;
     }
 
     h1 {
