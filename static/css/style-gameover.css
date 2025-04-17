@@ -79,6 +79,13 @@ button:hover {
 
 /* === MOBILNÍ VERZE === */
 @media (max-width: 768px) {
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 20px;
+    }
+    
     body {
         padding: 30px 15px;
         background-position: center;
