@@ -83,8 +83,10 @@ button:hover {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex-direction: row; /* <- důležité */
         padding: 12px 20px;
-    }
+        gap: 0;
+    }    
     
     body {
         padding: 20px 10px;
@@ -123,17 +125,5 @@ button:hover {
         width: 100%;
         font-size: 18px;
         padding: 16px 0;
-    }
-
-    .page-header {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        padding: 12px;
-    }
-
-    .logo-img,
-    .rules-img {
-        height: 40px;
     }
 }

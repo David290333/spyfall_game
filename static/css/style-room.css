@@ -100,20 +100,13 @@ button:hover {
 /* ✅ Mobilní verze */
 @media (max-width: 768px) {
     .page-header {
-        width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 20px;
-        box-sizing: border-box;
-    }
-    
-    .logo-img,
-    .rules-img {
-        height: 50px;
-        border-radius: 8px;
-        transition: transform 0.3s ease;
-    }
+        flex-direction: row; /* <- důležité */
+        padding: 12px 20px;
+        gap: 0;
+    }    
     
     body {
         padding: 20px 10px;
@@ -144,20 +137,6 @@ button:hover {
         font-size: 16px;
         padding: 14px 12px;
         margin-bottom: 10px;
-    }
-
-    .page-header {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        padding: 10px;
-    }
-
-    .logo-img,
-    .rules-img {
-        height: 50px;
-        border-radius: 8px;
-        transition: transform 0.3s ease;
     }
 
     .locations-grid {

@@ -57,26 +57,20 @@
     <input type="hidden" name="room_code" value="{{ room_code }}">
 
     {% if session['username'] == room.host %}
-        <form action="/pause_game" method="post" style="display:inline-block;">
+    <div class="button-group">
+        <form action="/pause_game" method="post">
             <input type="hidden" name="room_code" value="{{ room_code }}">
             <button type="submit">
-                {% if room.paused %}Pokračovat{% else %}Pause{% endif %}
+                {% if room.paused %}Continue{% else %}Pause{% endif %}
             </button>
         </form>
 
-        <form action="/end_game" method="post" style="display:inline-block;">
+        <form action="/end_game" method="post">
             <input type="hidden" name="room_code" value="{{ room_code }}">
             <button type="submit">End game</button>
         </form>
+    </div>
     {% endif %}
-
-    <!-- <form id="endGameForm">
-        <input type="hidden" name="room_code" value="{{ room_code }}">
-        <button type="button" id="showResultBtn" onclick="showGameOverPopup()" disabled>
-            Zobrazit výsledek
-        </button>
-    </form> -->
-    
 
     <div id="popup" style="display:none; position:fixed; top:20%; left:50%; transform:translateX(-50%);
                           background:white; border:2px solid black; padding:20px; z-index:1000;">
